@@ -1,38 +1,96 @@
-.App {
-  text-align: center;
+body{
+  background: #111827;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.App{
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  margin:0 auto;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  height:100vh;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 700px;
+  width:100%;
+  border: 1px solid darkgray;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.control-details{
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.control-details div label {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.control-details button{
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin:5px 5px;
+  background-color: #6366f1;
+  border:none;
+}
+
+.control-details input{
+  padding: 10px;
+  width: 250px;
+  border-radius: 5px;
+  border:none;
+  margin: 5px 10px;
+}
+
+.control-details div {
+  display: flex;
+  flex-direction: column;
+}
+.notes-list{
+  margin-top: 20px;
+  width: 100%;
+}
+
+.note{
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  font-size: 16px;
+}
+
+.note button {
+  color: white;
+  padding: 10px 20px;
+  border-radius: 7px;
+  margin-left: 5px;
+  background-color: #6366f1;
+  border: none;
+}
+
+.note input {
+  cursor: pointer;
+}
+
+.note p {
+  padding:0 20px;
+}
+
+@media  screen and (max-width: 350px) {
+  .note{
+    flex-direction: column;
   }
-  to {
-    transform: rotate(360deg);
+
+  .control-details input{
+    width: 150px;
   }
 }
