@@ -1,22 +1,10 @@
 import './App.css';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 function App() {
-  const [item, setItem] = useState('');
   const [notes, setNotes] = useState([]);
   
-  const handleClick = () => {
-        if(item === '')
-          return;       
-        setNotes(prev => [...prev, {id: Math.round(Math.random() * 1000), note: item}])
-        setItem('');
-
-  }
-  const handleChange = (e) => {
-    setItem(e.target.value);
-  }
   const deleteFromList = (id) => {
-    console.log('sigo')
     const list = notes.filter(item => item.id !== id)  
     setNotes(list)
   }
@@ -24,11 +12,7 @@ function App() {
     <div className="App" >
       <div className='container'>
       <div className='control-details'>
-        <div>
-          <label>Right your notes</label>
-          <input type="text" value={item} onChange={handleChange}/>
-        </div>
-        <button onClick={handleClick}>add</button>
+        <AddForm setNotes = {setNotes}/>
       </div>
       <div className='notes-list'>{notes.map(i => <Note key={i.id} id={i.id} note={i.note} deleteFromList={deleteFromList}/>)}</div>
     </div>
@@ -50,4 +34,27 @@ const Note = ({id, note, deleteFromList}) => {
     </div>
   )
 } 
+
+
+const AddForm = ({setNotes}) => {
+  const [item, setItem] = useState('');
+  const handleChange = (e) => {
+    setItem(e.target.value);
+  }
+  const handleClick = () => {
+    if(item === '')
+      return;       
+    setNotes(prev => [...prev, {id: Math.round(Math.random() * 1000), note: item}])
+    setItem('');
+  }
+  return (
+    <>
+      <div>
+        <label>Right your notes</label>
+        <input type="text" placeholder="add note here" value={item} onChange={handleChange}/>
+      </div>
+      <button onClick={handleClick}>add</button>
+    </>
+  )
+}
 export default App;
